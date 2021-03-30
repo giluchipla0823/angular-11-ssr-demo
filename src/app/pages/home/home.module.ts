@@ -4,6 +4,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { LazyLoadImageModule } from 'ng-lazyload-image'; 
 
 import { HomeComponent } from './home.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,11 @@ import { HomeComponent } from './home.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    TranslateModule
+  ],
+  exports: [
+    // TranslateModule
   ]
 })
 export class HomeModule { }
