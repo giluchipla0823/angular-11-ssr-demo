@@ -21,31 +21,13 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    /*
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['login']);
 
-      return false;
-    } */
-
-    /* if (isPlatformBrowser(this.platformId)) {
-
-      console.log('authenticated', {authenticated: this.authService.isAuthenticated()});
-
-      if (!this.authService.isAuthenticated()) {
-        this.router.navigate(['login']);
-
-        return false;
-      }
-    } */
-
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['login']);
-      
       return false;
     }
 
     return true;
   }
-  
+
 }
