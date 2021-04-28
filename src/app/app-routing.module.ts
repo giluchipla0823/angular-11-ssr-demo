@@ -45,8 +45,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})
+      initialNavigation: 'enabled'
+    })
   ],
   exports: [
     RouterModule

@@ -13,6 +13,7 @@ import { TransferState } from '@angular/platform-browser';
     ServerModule,
     ServerTransferStateModule,
     TranslateModule.forRoot({
+      defaultLanguage: 'es',
       loader: {
         provide: TranslateLoader,
         useFactory: translateServerLoaderFactory,

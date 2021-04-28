@@ -11,6 +11,8 @@
     "dev:ssr": "ng run angular-11-ssr-demo:serve-ssr",
     "serve:ssr": "node dist/angular-11-ssr-demo/server/main.js",
     "build:ssr": "ng build --prod && ng run angular-11-ssr-demo:server:production",
+    "build:ssr:es": "ng build --prod --output-path=dist/angular-11-ssr-demo/browser/es --base-href /es/ && ng run angular-11-ssr-demo:server:production",
+    "build:ssr:en": "ng build --prod --output-path=dist/angular-11-ssr-demo/browser/en --base-href /en/ && ng run angular-11-ssr-demo:server:production",
     "prerender": "ng run angular-11-ssr-demo:prerender"
   },
   "private": true,
