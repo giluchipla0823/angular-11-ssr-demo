@@ -1,6 +1,3 @@
 # SERVER SIDE RENDERING
 
 ng add @nguniversal/express-engine --clientProject [PROJECT_NAME]
-
-
-https://github.com/DmitryEfimenko/ssr-with-i18n
