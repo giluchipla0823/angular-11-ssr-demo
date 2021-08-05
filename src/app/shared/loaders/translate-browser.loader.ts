@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 import {
   makeStateKey,
@@ -10,7 +10,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 
 export class TranslateBrowserLoader implements TranslateLoader {
-  constructor(private http: HttpClient, private transferState: TransferState) {}
+  constructor(
+    private http: HttpClient,
+    private transferState: TransferState
+  ) {
+
+  }
 
   public getTranslation(lang: string): Observable<any> {
     const key: StateKey<number> = makeStateKey<number>(
@@ -33,7 +38,10 @@ export class TranslateBrowserLoader implements TranslateLoader {
 
 export function translateBrowserLoaderFactory(
   httpClient: HttpClient,
-  transferState: TransferState
+  transferState: TransferState,
 ) {
+
+  // translate.setDefaultLang('es');
+
   return new TranslateBrowserLoader(httpClient, transferState);
 }

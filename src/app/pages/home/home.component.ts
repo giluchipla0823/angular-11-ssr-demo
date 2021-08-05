@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
       default: 'assets/images/10.jpg',
     } */
   ];
-  
+
   constructor() { }
 
   ngOnInit(): void {

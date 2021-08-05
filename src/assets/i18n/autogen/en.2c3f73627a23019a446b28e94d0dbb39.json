@@ -1,0 +1,18 @@
+{
+    "language": {
+        "spanish": "Spanish",
+        "english": "English"
+    },
+    "menu": {
+        "home": "Home",
+        "about": "About",
+        "security": "Security",
+        "login": "Sign in"
+    },
+    "home": {
+        "title": "Welcome to my page",
+        "resume": "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.",
+        "text": "It uses utility classes for typography and spacing to space content out within the larger container.",
+        "button": "Learn more"
+    } 
+}

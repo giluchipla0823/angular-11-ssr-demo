@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "ngx-translate-cache"
+           ],
             "outputPath": "dist/angular-11-ssr-demo/browser",
             "index": "src/index.html",
             "main": "src/main.ts",

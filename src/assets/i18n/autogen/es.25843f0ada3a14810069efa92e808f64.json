@@ -1,0 +1,18 @@
+{
+    "language": {
+        "spanish": "Español",
+        "english": "Inglés"
+    },
+    "menu": {
+        "home": "Inicio",
+        "about": "Nosotros",
+        "security": "Zona segura",
+        "login": "Iniciar sesión"
+    },
+    "home": {
+        "title": "Bienvenido a mi página",
+        "resume": "Se trata de una sencilla unidad de héroe, un componente simple de estilo jumbotrón para llamar la atención sobre el contenido o la información destacados.",
+        "text": "Utiliza clases de utilidad para la tipografía y el espaciado para espaciar el contenido dentro del contenedor más grande.",
+        "button": "Leer más"
+    } 
+}

@@ -6,16 +6,22 @@ import { SharedComponentsModule } from './components/shared/shared-components.mo
 import { AppRoutingModule } from './app-routing.module';
 
 //Translation
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { TransferHttpCacheModule } from '@nguniversal/common';
+// import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { translateBrowserLoaderFactory } from './shared/loaders/translate-browser.loader';
+import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
+import { I18nModule } from './i18n/i18n.module';
+// import { I18nModule } from './i18n/i18n.module';
 
-export function HttpLoaderFactory(httpClient: HttpClient) {
+/* export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
-}
+} */
+
+// console.log(APP_BASE_HREF);
 
 @NgModule({
   declarations: [
@@ -23,10 +29,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    I18nModule,
     AppRoutingModule,
     SharedComponentsModule,
-    HttpClientModule,
-    TransferHttpCacheModule,
+    // HttpClientModule,
+    // TransferHttpCacheModule,
     /* TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -37,16 +44,18 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       }
     }) */
 
-    TranslateModule.forRoot({
+    /* TranslateModule.forRoot({
       defaultLanguage: 'es',
       loader: {
         provide: TranslateLoader,
         useFactory: translateBrowserLoaderFactory,
         deps: [HttpClient, TransferState]
       }
-    })
+    }) */
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

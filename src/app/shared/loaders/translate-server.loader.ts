@@ -16,6 +16,9 @@ export class TranslateServerLoader implements TranslateLoader {
     ) {}
 
     public getTranslation(lang: string): Observable<any> {
+
+        console.log('getTranslation', {lang});
+
         return new Observable((observer) => {
             const assets_folder = join(
                 process.cwd(),

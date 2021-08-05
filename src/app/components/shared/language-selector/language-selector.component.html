@@ -1,7 +1,9 @@
-<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{ (activeLang === 'es' ? 'language.spanish' : 'language.english') | translate }}
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" (click)="onChangeLanguage('es')" *ngIf="activeLang === 'en'">{{ 'language.spanish' | translate }}</a>
-    <a class="dropdown-item" (click)="onChangeLanguage('en')" *ngIf="activeLang === 'es'">{{ 'language.english' | translate }}</a>
-</div>
+<ng-container *ngIf="activeLang">
+    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ (activeLang === 'es' ? 'language.spanish' : 'language.english') | translate }}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" (click)="onChangeLanguage('es')" *ngIf="activeLang === 'en'">{{ 'language.spanish' | translate }}</a>
+        <a class="dropdown-item" (click)="onChangeLanguage('en')" *ngIf="activeLang === 'es'">{{ 'language.english' | translate }}</a>
+    </div>
+</ng-container>

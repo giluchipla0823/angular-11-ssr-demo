@@ -1,11 +1,12 @@
 import 'zone.js/dist/zone-node';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
+import * as cookieParser from 'cookie-parser';
 import * as express from 'express';
 import { join } from 'path';
 
 import { AppServerModule } from './src/main.server';
-import { APP_BASE_HREF } from '@angular/common';
+// import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
 // The Express app is exported so that it can be used by serverless Functions.
@@ -15,9 +16,19 @@ export function app(): express.Express {
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-  server.engine('html', ngExpressEngine({
+  /* server.engine('html', ngExpressEngine({
     bootstrap: AppServerModule
-  }));
+  })); */
+
+  server.use(cookieParser());
+
+  server.engine('html', (filePath, options: any, callback) => {
+    options.engine(
+      filePath,
+      {req: options.req, res: options.res},
+      callback
+    );
+  });
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
@@ -30,9 +41,52 @@ export function app(): express.Express {
   }));
 
   // All regular routes use the Universal engine
-  server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+
+  const routes = [
+    {path: '/es/*', view: 'es/index'},
+    {path: '/en/*', view: 'en/index'},
+    {path: '/*', view: 'index'}
+  ];
+
+  routes.forEach((route) => {
+    const { path, view } = route;
+
+    server.get(path, (req, res) => {
+      res.render(
+        view,
+        {
+          req,
+          res,
+          engine: ngExpressEngine({
+            bootstrap: AppServerModule,
+          })
+        }
+      );
+    });
+
   });
+
+/*   server.get('/es/*', (req, res) => {
+    // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.render('es/index', {
+      req,
+      res,
+      engine: ngExpressEngine({
+        bootstrap: AppServerModule,
+      })
+    });
+  });
+
+  server.get('/*', (req, res) => {
+    // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.render('index', {
+      req,
+      res,
+      engine: ngExpressEngine({
+        bootstrap: AppServerModule,
+      })
+    });
+  }); */
 
   return server;
 }
